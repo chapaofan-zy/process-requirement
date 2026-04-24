@@ -14,13 +14,13 @@
 
 ```bash
 # 安装所有 skills
-npx skills add https://github.com/chapaofan-zy/process-requirement-skill
+npx skills add https://github.com/chapaofan-zy/process-requirement
 
 # 安装指定 skill
-npx skills add https://github.com/chapaofan-zy/process-requirement-skill --skill process-requirement
+npx skills add https://github.com/chapaofan-zy/process-requirement --skill process-requirement
 
 # 全局安装
-npx skills add https://github.com/chapaofan-zy/process-requirement-skill -g
+npx skills add https://github.com/chapaofan-zy/process-requirement -g
 ```
 
 ## 使用方式
