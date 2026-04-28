@@ -7,7 +7,7 @@ description: >-
   "implement feature"等涉及构建或修改功能的请求时激活此技能。
   此技能确保在任何代码变更之前完成充分的需求沟通、影响分析和用户确认。
 metadata:
-  author: ""
+  author: "chapaofan"
   version: "1.0"
 ---
 

@@ -6,7 +6,7 @@ description: >-
   Agent Skill 的请求时激活此技能。此技能确保产出的 skill 结构完整、描述清晰、
   触发词准确、工作流程合理。
 metadata:
-  author: ""
+  author: "chapaofan"
   version: "1.0"
 ---
 
