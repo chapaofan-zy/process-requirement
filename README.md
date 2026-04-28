@@ -1,14 +1,41 @@
-# Process Requirement Skill
+# Agent Skills Collection
 
-一个 Agent Skill，在编码前引导结构化的需求分析与沟通，确保充分理解需求后再动手开发。
+一组用于 Claude Code 的 Agent Skills，帮助规范化软件开发流程。
 
-## 功能特性
+## Skills 列表
+
+| Skill | 说明 | 触发词示例 |
+| ----- | ---- | --------- |
+| [process-requirement](skills/process-requirement/) | 编码前引导结构化的需求分析与沟通 | "新需求"、"需求分析"、"帮我做个功能"、"new feature" |
+| [create-skill](skills/create-skill/) | 引导规范地创建 Agent Skill | "创建 skill"、"写个 skill"、"new skill" |
+
+## process-requirement
+
+在编码前引导结构化的需求分析与沟通，确保充分理解需求后再动手开发。
+
+**核心流程**：需求沟通 → 影响分析 → 文件变更计划 → 实现
+
+**功能特性**：
 
 - 自动引导需求沟通，提出澄清问题，反复迭代直到用户满意
 - 扫描代码库，生成文件变更计划（新增 / 修改 / 删除）
-- 每个阶段都需要用户明确确认才能继续，不会擅自跳过
+- 每个阶段都需要用户明确确认才能继续
 - 内置按领域分类的提问模板（前端、后端、数据库、集成、缺陷修复、重构）
 - 实现过程中发现计划外变更会主动停下来征求用户意见
+
+## create-skill
+
+引导用户规范地创建 Agent Skill，确保产出的 skill 结构完整、质量合格。
+
+**核心流程**：Skill 定位与设计 → SKILL.md 编写 → 参考文件编写 → 生成文件
+
+**功能特性**：
+
+- 引导明确 skill 定位：目标用户、核心问题、与已有 skill 的关系
+- 设计触发机制：中英文触发词、避免误触发
+- 按规范生成 SKILL.md：frontmatter、工作流程、规则
+- 内置 Skill 结构规范和质量检查清单
+- 每个阶段都需要用户确认才能继续
 
 ## 安装
 
@@ -18,6 +45,7 @@ npx skills add https://github.com/chapaofan-zy/process-requirement
 
 # 安装指定 skill
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill process-requirement
+npx skills add https://github.com/chapaofan-zy/process-requirement --skill create-skill
 
 # 全局安装
 npx skills add https://github.com/chapaofan-zy/process-requirement -g
@@ -25,41 +53,38 @@ npx skills add https://github.com/chapaofan-zy/process-requirement -g
 
 ## 使用方式
 
-安装后，对 Agent 说以下类似的话即可自动激活：
+安装后，对 Agent 说出对应的触发词即可自动激活相应 skill：
+
+**process-requirement**：
 
 - "新需求" / "需求分析" / "帮我做个功能"
 - "开发功能" / "实现功能" / "开始开发"
 - "帮我写" / "加个功能" / "改一下"
 
-## 执行流程
+**create-skill**：
 
-### 第一阶段：需求沟通
+- "创建 skill" / "新建 skill" / "写个 skill"
+- "create skill" / "new skill" / "add skill"
+- "写个技能" / "加个技能"
 
-1. 确认对需求的初步理解
-2. 提出澄清问题（目标、边界、交互、数据、性能、依赖等）
-3. 反复迭代，直到用户说"可以了"、"确认"、"OK"等
+## 项目结构
 
-### 第二阶段：影响分析
-
-1. 扫描项目结构和相关文件
-2. 生成文件变更计划：
-
-| 类型 | 说明 |
-|------|------|
-| 🆕 新增文件 | 列出文件路径和用途 |
-| ✏️ 修改文件 | 列出文件路径和变更内容 |
-| 🗑️ 删除文件 | 列出文件路径和删除原因 |
-
-3. 展示计划，等待用户批准
-
-### 第三阶段：实现
-
-1. 严格按照批准的计划编码
-2. 遵循项目现有代码风格
-3. 每完成一个文件简要说明变更
-4. 全部完成后提供总结
-
-> 如果实现过程中发现计划需要调整，会立即停下来与用户沟通，不会擅自进行计划外的变更。
+```text
+├── README.md
+├── LICENSE
+└── skills/
+    ├── process-requirement/
+    │   ├── README.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── question-templates.md
+    └── create-skill/
+        ├── README.md
+        ├── SKILL.md
+        └── references/
+            ├── skill-spec.md
+            └── skill-checklist.md
+```
 
 ## License
 
