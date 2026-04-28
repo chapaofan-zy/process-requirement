@@ -8,6 +8,7 @@
 | ----- | ---- | --------- |
 | [process-requirement](skills/process-requirement/) | 编码前引导结构化的需求分析与沟通 | "新需求"、"需求分析"、"帮我做个功能"、"new feature" |
 | [create-skill](skills/create-skill/) | 引导规范地创建 Agent Skill | "创建 skill"、"写个 skill"、"new skill" |
+| [setup-environment](skills/setup-environment/) | 引导开发环境的检测、分析与安装指导 | "安装环境"、"配置环境"、"setup environment" |
 
 ## process-requirement
 
@@ -37,6 +38,21 @@
 - 内置 Skill 结构规范和质量检查清单
 - 每个阶段都需要用户确认才能继续
 
+## setup-environment
+
+引导用户完成开发环境的检测、分析与安装指导，推荐最佳安装方式，确保用户清楚每一步的影响。
+
+**核心流程**：需求沟通 → 环境检测 → 安装方案 → 执行与验证
+
+**功能特性**：
+
+- 自动引导需求沟通，明确用户需要安装的环境类型和版本要求
+- 检测当前系统已有环境，识别缺失或需更新的依赖
+- 分析项目配置文件，自动识别依赖清单
+- 为每个待安装项推荐最佳安装方式，并说明推荐理由和备选方案
+- 详细说明每步操作的作用、预期结果和潜在风险
+- 逐步引导安装，每步完成后即时验证结果
+
 ## 安装
 
 ```bash
@@ -46,6 +62,7 @@ npx skills add https://github.com/chapaofan-zy/process-requirement
 # 安装指定 skill
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill process-requirement
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill create-skill
+npx skills add https://github.com/chapaofan-zy/process-requirement --skill setup-environment
 
 # 全局安装
 npx skills add https://github.com/chapaofan-zy/process-requirement -g
@@ -67,6 +84,13 @@ npx skills add https://github.com/chapaofan-zy/process-requirement -g
 - "create skill" / "new skill" / "add skill"
 - "写个技能" / "加个技能"
 
+**setup-environment**：
+
+- "安装环境" / "配置环境" / "搭建环境"
+- "环境设置" / "装一下环境" / "初始化环境"
+- "开发环境" / "装个依赖" / "环境有问题"
+- "setup environment" / "install environment" / "dev setup"
+
 ## 项目结构
 
 ```text
@@ -78,12 +102,17 @@ npx skills add https://github.com/chapaofan-zy/process-requirement -g
     │   ├── SKILL.md
     │   └── references/
     │       └── question-templates.md
-    └── create-skill/
+    ├── create-skill/
+    │   ├── README.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       ├── skill-spec.md
+    │       └── skill-checklist.md
+    └── setup-environment/
         ├── README.md
         ├── SKILL.md
         └── references/
-            ├── skill-spec.md
-            └── skill-checklist.md
+            └── environment-checklist.md
 ```
 
 ## License
