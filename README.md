@@ -9,6 +9,7 @@
 | [process-requirement](skills/process-requirement/) | 编码前引导结构化的需求分析与沟通 | "新需求"、"需求分析"、"帮我做个功能"、"new feature" |
 | [create-skill](skills/create-skill/) | 引导规范地创建 Agent Skill | "创建 skill"、"写个 skill"、"new skill" |
 | [setup-environment](skills/setup-environment/) | 引导开发环境的检测、分析与安装指导 | "安装环境"、"配置环境"、"setup environment" |
+| [optimize-performance](skills/optimize-performance/) | 利用 Chrome DevTools MCP 分析和优化页面加载性能 | "优化性能"、"性能分析"、"optimize performance" |
 
 ## process-requirement
 
@@ -53,6 +54,19 @@
 - 详细说明每步操作的作用、预期结果和潜在风险
 - 逐步引导安装，每步完成后即时验证结果
 
+## optimize-performance
+
+利用 Chrome DevTools MCP 对页面加载性能进行分析，给出优化建议并在用户确认后自动修改代码，最后验证优化效果。
+
+**核心流程**：环境检测 → 性能分析与展示 → 优化建议 → 代码修改 → 效果验证
+
+**功能特性**：
+
+- 自动检测 Chrome DevTools MCP 是否可用，未配置时提供静态分析建议并引导安装
+- 使用 Lighthouse 和 Performance Trace 收集 Core Web Vitals 关键指标并展示报告
+- 按优先级给出可落地的优化建议，用户确认后自动修改代码
+- 优化后再次测量性能，给出指标对比和提升幅度报告
+
 ## 安装
 
 ```bash
@@ -63,6 +77,7 @@ npx skills add https://github.com/chapaofan-zy/process-requirement
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill process-requirement
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill create-skill
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill setup-environment
+npx skills add https://github.com/chapaofan-zy/process-requirement --skill optimize-performance
 
 # 全局安装
 npx skills add https://github.com/chapaofan-zy/process-requirement -g
@@ -91,6 +106,12 @@ npx skills add https://github.com/chapaofan-zy/process-requirement -g
 - "开发环境" / "装个依赖" / "环境有问题"
 - "setup environment" / "install environment" / "dev setup"
 
+**optimize-performance**：
+
+- "优化性能" / "页面性能" / "性能分析"
+- "性能优化" / "页面加载优化" / "分析性能" / "提升性能"
+- "optimize performance" / "performance analysis" / "improve performance"
+
 ## 项目结构
 
 ```text
@@ -108,11 +129,16 @@ npx skills add https://github.com/chapaofan-zy/process-requirement -g
     │   └── references/
     │       ├── skill-spec.md
     │       └── skill-checklist.md
-    └── setup-environment/
+    ├── setup-environment/
+    │   ├── README.md
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── environment-checklist.md
+    └── optimize-performance/
         ├── README.md
         ├── SKILL.md
         └── references/
-            └── environment-checklist.md
+            └── performance-checklist.md
 ```
 
 ## License
