@@ -10,6 +10,7 @@
 | [create-skill](skills/create-skill/) | 引导规范地创建 Agent Skill | "创建 skill"、"写个 skill"、"new skill" |
 | [setup-environment](skills/setup-environment/) | 引导开发环境的检测、分析与安装指导 | "安装环境"、"配置环境"、"setup environment" |
 | [optimize-performance](skills/optimize-performance/) | 利用 Chrome DevTools MCP 分析和优化页面加载性能 | "优化性能"、"性能分析"、"optimize performance" |
+| [record-interview](skills/record-interview/) | 整理当前对话中的面试问答并归档为结构化 Markdown | "记录这次面试"、"保存面试题"、"record interview" |
 
 ## process-requirement
 
@@ -67,6 +68,22 @@
 - 按优先级给出可落地的优化建议，用户确认后自动修改代码
 - 优化后再次测量性能，给出指标对比和提升幅度报告
 
+## record-interview
+
+在用户明确要求时，整理当前对话中的面试问答，经用户确认归档方案后生成结构化 Markdown 存入项目对应目录。
+
+**核心流程**：对话内容梳理 → 归档方案设计 → 用户确认 → 生成并写入
+
+**功能特性**：
+
+- 仅在用户明确要求时触发，不主动整理未被要求记录的对话
+- 支持三种对话形态：用户提问 AI 回答、AI 出题用户回答、粘贴的外部面试题
+- 自动识别主题、难度，抽取参考答案、追问链、易错点和知识延伸
+- 自动扫描项目根目录已有的面试笔记目录，沿用或新建
+- 按主题分文件，优先追加到已有文件，避免零碎
+- 写入前必须获得用户对归档方案（文件夹、文件名、归档去向）的明确确认
+- 不记录用户自己的作答，只保留问题、答案和扩展信息
+
 ## 安装
 
 ```bash
@@ -78,6 +95,7 @@ npx skills add https://github.com/chapaofan-zy/process-requirement --skill proce
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill create-skill
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill setup-environment
 npx skills add https://github.com/chapaofan-zy/process-requirement --skill optimize-performance
+npx skills add https://github.com/chapaofan-zy/process-requirement --skill record-interview
 
 # 全局安装
 npx skills add https://github.com/chapaofan-zy/process-requirement -g
